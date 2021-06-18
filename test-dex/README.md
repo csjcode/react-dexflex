@@ -1,3 +1,9 @@
+Testing out this dAPP idea from this url:
+source: https://dev.to/ccoyotedev/building-an-aavegotchi-dapp-using-react-web3-2noe
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
