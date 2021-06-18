@@ -1,6 +1,8 @@
+// Tutorial source: https://dev.to/ccoyotedev/building-an-aavegotchi-dapp-using-react-web3-2noe
 import { useEffect, useState } from 'react';
 import { Gotchi, QueryResponse } from './types';
 import { GotchiListing } from './components/GotchiListing';
+import { SelectedGotchi } from './components/SelectedGotchi';
 import { request } from "graphql-request";
 import './App.css';
 
@@ -9,6 +11,7 @@ const uri = 'https://api.thegraph.com/subgraphs/name/aavegotchi/aavegotchi-core-
 function App() {
 
   const [ gotchis, setGotchis ] = useState<Array<Gotchi>>([]);
+  const [ selectedGotchi, setSelectedGotchi ] = useState<number>(0);
 
   const fetchGotchis = async () => {
 
@@ -32,6 +35,12 @@ function App() {
         <div className="App">
           <div className="container">
             <div className="selected-container">
+              {gotchis.length > 0 && (
+                <SelectedGotchi
+                  name={gotchis[selectedGotchi].name} 
+                  traits={gotchis[selectedGotchi].withSetsNumericTraits}
+                />
+              )}
             </div>
             <div className="gotchi-list">              
               {
@@ -41,8 +50,8 @@ function App() {
                     id={gotchi.id}
                     name={gotchi.name}
                     collateralColor="black"
-                    selectGotchi={() => null}
-                    selected={false}
+                    selectGotchi={() => setSelectedGotchi(i)}
+                    selected={i === selectedGotchi}
                   />
                 ))
               }

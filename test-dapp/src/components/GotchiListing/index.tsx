@@ -1,4 +1,5 @@
 //GotchiListing/index.tsx
+// Tutorial source: https://dev.to/ccoyotedev/building-an-aavegotchi-dapp-using-react-web3-2noe
 
 import "./styles.css"
 
