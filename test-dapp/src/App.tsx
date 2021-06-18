@@ -1,23 +1,36 @@
-//App.tsx
-// https://dev.to/ccoyotedev/building-an-aavegotchi-dapp-using-react-web3-2noe
-
 import { useEffect } from 'react';
+import { request } from "graphql-request";
 import './App.css';
+
+const uri = 'https://api.thegraph.com/subgraphs/name/aavegotchi/aavegotchi-core-matic';
+
 
 function App() {
 
- const fetchGotchis = () => {
-   console.log('Hello fren');
- }
+  const fetchGotchis = async () => {
 
- useEffect(() => {
-   fetchGotchis();
- }, [])
+      const query = `
+      {
+        aavegotchis(first: 100, orderBy: gotchiId) {
+          id
+          name
+          collateral
+          withSetsNumericTraits
+        }
+      }
+    `
+    const response = await request(uri, query);
+    console.log(response);
+   }
+    useEffect(() => {
+        fetchGotchis();
+      }, [])
 
- return (
-   <div className="App">
-   </div>
- );
-}
+      return (
+        <div className="App">
+        </div>
+      );
+    }
+
 
 export default App;
