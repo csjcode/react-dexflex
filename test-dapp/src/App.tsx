@@ -30,11 +30,12 @@ function App() {
       }, [])
       return (
         <div className="App">
-          {gotchis.map((gotchi, i) => {
-            return (
-              <p key={i}>{gotchi.name}</p>
-            )
-          })}
+          <div className="container">
+            <div className="selected-container">
+            </div>
+            <div className="gotchi-list">
+            </div>
+          </div>
         </div>
       );
     }
